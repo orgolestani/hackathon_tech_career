@@ -10,6 +10,7 @@ import Login from "../loginForm/Login";
 import {IconContext} from 'react-icons/lib'
 
 function NavBar() {
+  const [btnTxtCng, setBtnTxtCng] = useState(false);
   const [click, setClick] = useState(false);
   const [isButton,setIsButton] = useState(true)
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -24,7 +25,7 @@ const showButton = () =>{
   }
 };
 const showModal = () => {
-  setIsModalVisible(true);
+  setIsModalVisible(state=>!state);
 };
 const handleCancel = () => {
   setIsModalVisible(false);
@@ -32,7 +33,6 @@ const handleCancel = () => {
 useEffect(()=>{
   showButton()
 },[])
-
 window.addEventListener("resize",showButton);
   return (
     <>
@@ -74,17 +74,29 @@ window.addEventListener("resize",showButton);
             </li>
             <li className="nav-btn">
            
-              {isButton ? (<div>
-                <Link to="/signup" className="btn-link" onClick={showModal}>
-                  <Button buttonStyle='btn--outline'>התחבר</Button>
-                </Link>
+             
+                {/* {isLogIn? (
+            <Button size="large" type="primary" onClick={btnTxtCng}>
+              התנתק{" "}
+            </Button>
+          ) : (
+            <Button size="large" type="primary" onClick={showModal}>
+              התחבר{" "}
+            </Button>
+          )} */}
+          
+ {isButton ? (<div>
+                <Link to="/signup" className="btn-link" > 
+                  <Button onClick={showModal} buttonStyle='btn--outline'>{btnTxtCng?"התנתק":"התחבר"}</Button>
+                 </Link>
+
                 <Modal
             title="התחברות"
             visible={isModalVisible}
             onCancel={handleCancel}
             footer={null}
           >
-            <Login />
+            <Login isLogIn={setBtnTxtCng} showModal={showModal}/>
           </Modal>
                 </div>
               ): (

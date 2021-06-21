@@ -46,6 +46,17 @@ function AdminPage() {
       title: "מועד הסיום",
       dataIndex: "courseCompletionDate",
       key: "courseCompletionDate",
+       render: (text: string) => text,
+      ...tableColumnTextFilterConfig(),
+      onFilter: (
+        value: { toString: () => string },
+        record: { courseCompletionDate: { toString: () => string } }
+      ) => {
+        return record.courseCompletionDate
+          .toString()
+          .toLowerCase()
+          .includes(value.toString().toLowerCase());
+      },
     },
     {
       title: "מס בוגרים",
@@ -62,11 +73,33 @@ function AdminPage() {
       title: "מחזור",
       dataIndex: "cycle",
       key: "cycle",
+      render: (text: string) => text,
+      ...tableColumnTextFilterConfig(),
+      onFilter: (
+        value: { toString: () => string },
+        record: { cycle: { toString: () => string } }
+      ) => {
+        return record.cycle
+          .toString()
+          .toLowerCase()
+          .includes(value.toString().toLowerCase());
+      },
     },
     {
       title: "מס מועסקים",
       dataIndex: "graduatesWorking",
       key: "graduatesWorking",
+      render: (text: string) => text,
+      ...tableColumnTextFilterConfig(),
+      onFilter: (
+        value: { toString: () => string },
+        record: { courseCompletionDate: { toString: () => string } }
+      ) => {
+        return record.courseCompletionDate
+          .toString()
+          .toLowerCase()
+          .includes(value.toString().toLowerCase());
+      },
     },
     {
       title: "מס מחפשי עבודה",
@@ -74,6 +107,17 @@ function AdminPage() {
       key: "graduatesNotWorking",
       width: 120,
       fixed: "right",
+      render: (text: string) => text,
+      ...tableColumnTextFilterConfig(),
+      onFilter: (
+        value: { toString: () => string },
+        record: { graduatesNotWorking: { toString: () => string } }
+      ) => {
+        return record.graduatesNotWorking
+          .toString()
+          .toLowerCase()
+          .includes(value.toString().toLowerCase());
+      },
     },
     {
       title: "סגירת השמות",
@@ -81,6 +125,17 @@ function AdminPage() {
       key: "graduatesWorking",
       width: 120,
       fixed: "right",
+      render: (text: string) => text,
+      ...tableColumnTextFilterConfig(),
+      onFilter: (
+        value: { toString: () => string },
+        record: { graduatesWorking: { toString: () => string } }
+      ) => {
+        return record.graduatesWorking
+          .toString()
+          .toLowerCase()
+          .includes(value.toString().toLowerCase());
+      },
     },
   ];
 

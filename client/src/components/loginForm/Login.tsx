@@ -11,7 +11,8 @@ const { setUserData } = usersActions.usersActions;
 const mapDispatchToProps = (dispatch: any) => ({setUserData: (data: Object) => { dispatch(setUserData(data)) }})
 const mapStateToProps = (state: any) => { return { userData: state.user.userData } }
 
-const Login = (): any => {
+const Login = (props:any): any => {
+    const{isLogIn,showModal}=props
     const [role, setRole] = useState('student')
     const layout = { labelCol: { span: 8 }, wrapperCol: { span: 16 } }
     const tailLayout = { wrapperCol: { offset: 8, span: 16 } }
@@ -25,11 +26,12 @@ const Login = (): any => {
         console.log(password);
         
         if (resFromLogin.success) {
+            // isLogIn(true)
             const token = resFromLogin.token
             setTokenLocal(token)
             setUserData(token)
-            window.location.reload();
-
+            // window.location.reload();
+            showModal()
         } else { alert('נסה שוב') }
 
     }
@@ -64,7 +66,7 @@ const Login = (): any => {
 
             <div style={{ display: 'flex', justifyContent: 'space-between', }}>
                 <Form.Item  {...tailLayout} >
-                    <Button type="primary" htmlType="submit"> התחבר </Button>
+                    <Button  type="primary" htmlType="submit"> התחבר </Button>
                 </Form.Item>
                 <Select defaultValue="student" style={{ width: 120, height: '110%' }} onChange={handleChange}>
                     <Option value="student">Student</Option>
