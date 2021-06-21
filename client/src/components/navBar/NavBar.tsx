@@ -75,13 +75,13 @@ window.addEventListener("resize",showButton);
             <li className="nav-btn">
            
              
-                {/* {isLogIn? (
+                {/* {isButton? (
             <Button size="large" type="primary" onClick={btnTxtCng}>
-              התנתק{" "}
+              {" התחבר"}
             </Button>
           ) : (
             <Button size="large" type="primary" onClick={showModal}>
-              התחבר{" "}
+              {" התנתק"}
             </Button>
           )} */}
           
@@ -101,12 +101,11 @@ window.addEventListener("resize",showButton);
                 </div>
               ): (
                 <Link to="/signup" className="btn-link" onClick={closeMobileMenu}>
-                  <Button buttonStyle='btn--outline'
-                  buttonSize='btn--mobile'
-                  >התחבר
-                  </Button>
-                </Link>
-              )}
+                  <Button buttonStyle='btn--outline' buttonSize='btn--mobile'>התחבר</Button>
+                 
+                  
+                  
+                </Link> )}
             </li>
           </ul>
         </div>

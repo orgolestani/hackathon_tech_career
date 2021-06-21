@@ -26,13 +26,14 @@ const Login = (props:any): any => {
         console.log(password);
         
         if (resFromLogin.success) {
-            // isLogIn(true)
+            isLogIn(true)
             const token = resFromLogin.token
             setTokenLocal(token)
             setUserData(token)
             // window.location.reload();
             showModal()
-        } else { alert('נסה שוב') }
+        } else { alert('נסה שוב')} 
+          
 
     }
     const onFinishFailed = (errorInfo: any) => { console.log('Failed:', errorInfo) }
