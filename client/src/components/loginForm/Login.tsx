@@ -23,7 +23,7 @@ const Login = (props: any): any => {
         console.log(password)
 
         if (resFromLogin.success) {
-            // isLogIn(true)
+            isLogIn(true)
             const token = resFromLogin.token
             console.log('in success')
             console.log(token)

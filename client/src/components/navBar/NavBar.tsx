@@ -68,11 +68,7 @@ function NavBar() {
                             {click ? <FaTimes /> : <FaBars />}
                         </div>
                         <ul className={click ? 'nav-menu active' : 'nav-menu'}>
-                            <li className="nav-item">
-                                <Link to="/" className="nav-links">
-                                    עמוד הבית
-                                </Link>
-                            </li>
+                            <li className="nav-item"></li>
                             <li className="nav-item">
                                 <Link
                                     to="/student"
@@ -116,7 +112,7 @@ function NavBar() {
                                     }
                                     buttonStyle="btn--outline"
                                 >
-                                    {isLogged ? 'log out' : 'log in'}
+                                    {isLogged ? 'התנתק' : 'התחבר'}
                                 </Button>
                                 <Modal
                                     title="התחברות"
