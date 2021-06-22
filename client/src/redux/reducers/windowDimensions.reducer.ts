@@ -1,16 +1,28 @@
-import windowSize from '../actions/windowDimensions.actions';
+import windowSize from '../actions/windowDimensions.actions'
 
-export default function windowDimensions(state = {
-    width: Number,
-    height: Number
-}, action: { type: String, payload: { width: Number, height: Number } }) {
-    const { SET_WINDOW_DIMENSIONS } = windowSize.windowDimensionsTypes;
+type State =
+    | {}
+    | {
+          width: number
+          height: number
+      }
 
+interface Action {
+    type: string
+    payload: object
+}
+
+const { SET_WINDOW_DIMENSIONS } = windowSize.windowDimensionsTypes
+
+export default function windowDimensions(state: State = {}, action: Action) {
     switch (action.type) {
-
         case SET_WINDOW_DIMENSIONS:
-            return { width: action.payload.width, height: action.payload.height };
+            const { width, height } = action.payload as {
+                height: number
+                width: number
+            }
+            return { width, height }
         default:
-            return state;
+            return state
     }
 }

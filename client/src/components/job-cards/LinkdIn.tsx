@@ -14,7 +14,7 @@ export default function LinkdIn() {
   useEffect(() => {
     const fetchData = async () => {
       let fetchedData = await getManyJobOffers({ isHidden: false });
-      const jobOffers = fetchedData.data
+      const jobOffers = fetchedData.data || ""
       setFetchedDataDb(jobOffers);  
       setUserInfo(jobOffers[0])
     };
@@ -26,7 +26,9 @@ export default function LinkdIn() {
     
       (fetchedDataDb.length > 0 ) ? 
         <MainContainer>
-          <Search placeholder="search" enterButton="Search" size="large" />
+          <div className="searchDiv" style={{display:"flex",alignItems:"center",justifyContent:"flexEnd",direction:"rtl"}}>
+                      <Search placeholder="search" enterButton="Search" size="large" style={{width:680}} />
+          </div>
           <Container>
             <Row style={{ width: "100%" }}>
               <Col
